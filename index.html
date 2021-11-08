@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Handshake Airdrop Claim Check</title>
+	<script src="https://unpkg.com/tailwindcss-jit-cdn"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.6.1/sql-asm.min.js">
+	</script>
+	<style>
+        html, body {
+            height: 100%;
+        }
+        a[target="_blank"]::before {
+            content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAQElEQVR42qXKwQkAIAxDUUdxtO6/RBQkQZvSi8I/pL4BoGw/XPkh4XigPmsUgh0626AjRsgxHTkUThsG2T/sIlzdTsp52kSS1wAAAABJRU5ErkJggg==);
+            margin: 0 5px 0 3px;
+        }
+        .hidden {
+            display: none;
+        }
+	</style>
+</head>
+<body class="flex flex-col h-full">
+    <div class="flex-grow">
+        <header class="px-6 py-6 flex justify-between items-center bg-gray-100">
+            <a href="https://htools.work" class="hover:underline">hTools</a>
+            <h1 class="mx-8 text-lg font-medium text-center">Handshake Airdrop Claim Check</h1>
+            <a href="https://github.com/htools-org/airdrop-claim-check" class="hover:underline">GitHub</a>
+        </header>
+        
+        <main class="mt-12 md:mt-16 w-full text-center">
+            <p>Check if your airdrop has already been claimed.</p>
+            <br>
+            <p class="mt-2 mb-12">Run hs-airdrop to generate your proof,<br>
+            and enter the <span>index</span> number here to check.</p>
+
+            <div id="inputDiv" class="max-w-lg mx-auto flex justify-center hidden">
+                <input class="ml-4 flex-grow w-1 px-4 py-2 text-lg md:text-2xl text-center bg-gray-50 rounded-l-lg border-2" id="indexInput" placeholder="Index Number" type="text">
+                <button class="mr-4 flex-shrink-0 px-4 rounded-r-lg bg-gray-500 text-gray-50 uppercase" id="checkBtn">check</button>
+            </div>
+
+            <p id="textbox" class="mt-4 inline-block px-4 py-2 rounded hidden">...</p>
+
+            <table id="table" class="mt-4 block max-w-xl mx-auto rounded border text-left overflow-auto hidden">
+                <tr>
+                    <td class="p-2 font-medium">Block</td>
+                    <td class="p-2 break-all">
+                        <a id="block" class="font-mono hover:underline cursor-pointer" rel="noopener" target="_blank">...</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="p-2 font-medium">Tx Hash</td>
+                    <td class="p-2 break-all">
+                        <a id="txhash" class="font-mono hover:underline cursor-pointer" rel="noopener" target="_blank">...</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="p-2 font-medium">Value</td>
+                    <td id="amount" class="p-2 break-all font-mono">... HNS</td>
+                </tr>
+                <tr>
+                    <td class="p-2 font-medium">Address</td>
+                    <td class="p-2 break-all">
+                        <a id="address" class="font-mono hover:underline cursor-pointer" rel="noopener" target="_blank">...</a>
+                    </td>
+                </tr>
+            </table>
+            
+            <svg class="mx-auto h-40" id="loading" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M73 50c0-12.7-10.3-23-23-23S27 37.3 27 50m3.9 0c0-10.5 8.5-19.1 19.1-19.1S69.1 39.5 69.1 50">
+                    <animatetransform attributename="transform" attributetype="XML" dur="1s" from="0 50 50" repeatcount="indefinite" to="360 50 50" type="rotate"></animatetransform>
+                </path>
+            </svg>
+        </main>
+    </div>
+
+    <br><br>
+    
+    <footer class="flex-shrink-0 w-full py-2 text-center bg-gray-100">
+        <p class="text-sm font-medium text-gray-600">
+            Made with ♥️ by <a href="https://blek.ga" class="hover:underline">Rithvik Vibhu</a> |
+            Proudly supported by <a href="https://github.com/HandyOSS/HandyGrants" target="_blank" rel="noopener noreferrer" class="hover:underline">HandyOSS</a>
+        </p>
+    </footer>
+
+	<script src="script.js"></script>
+</body>
+</html>
